@@ -17,13 +17,22 @@ class AnimalsController < ApplicationController
 
   def update
     @animal = Animal.find(params[:id])
-    @animal.update(animal_params)
+    if @animal.update(animal_params)
+      render status: 200, json: {
+        message: "This Animal has been updated successfully."
+      }
+    end
   end
 
   def destroy
     @animal = Animal.find(params[:id])
-    @animal.destroy
+    if @animal.destroy
+      render status: 200, json: {
+        message: "This Animal has been deleted successfully."
+      }
+    end
   end
+
   private
   def json_response(object, status = :ok)
     render json: object, status: status
