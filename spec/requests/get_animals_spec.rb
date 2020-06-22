@@ -9,4 +9,7 @@ describe "get all anaimals route", :type => :request do
     expect(JSON.parse(response.body).size).to eq(20)
   end
 
+  it 'returns staus code 200' do 
+    expect(response).to have_http_status(:success)
+  end 
 end

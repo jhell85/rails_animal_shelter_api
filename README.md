@@ -6,9 +6,11 @@
 
 ## Description 
 
-_This is an API application that will let a user see an available animals in the animal shelter it will return a json object with an anmial that will have their species name and age_
+_An API application that will let a user see an available animals in the animal shelter_
 
 ## Setup/Installation Requirements
+
+
 ## Setup/Installation Requirements
 _Make sure you have [Ruby](https://www.ruby-lang.org/en/documentation/installation) installed on your computer._
 
@@ -17,48 +19,26 @@ _Make sure you have [git version control](https://git-scm.com/downloads) install
 1. use the green 'Clone or Download' button to copy the link url
 2. open terminal and type...
 
-**Windows**
-```sh 
-cd desktop
-```
+## Setup/Installation Requirements to run locally:
 
- Mac & linux 
- ```sh
- cd ~/Desktop
- ```
+3. Clone this repository https://github.com/jhell85/rails_animal_shelter_api.git
+4. Cd to new directory
+5. Run Bundle install
+6. Run rake db:setup to setup database with seeded data
+7. Run rails s
+8. Navigate to localhost:3000 to make requests
 
- 3. in terminal type '_git clone https://github.com/jhell85/rails_product_reviewer.git_ '
+## Endpoints
 
-```sh
-git clone https://github.com/jhell85/rails_product_reviewer.git
-```
+| HTTP Verb | URL                                                                    | Description                  | 
+|-----------|------------------------------------------------------------------------|------------------------------|
+| GET       | http://localhost:3000/animals                                          | Get list of all animals      
+| GET       | http://localhost:3000/animals/id                                       | Get a single animal by id    
+| POST      | http://localhost:3000/animals                                          | Create new animals           
+| PUT       | http://localhost:3000/animals/id                                       | Update a single animal by id 
+| DELETE    | http://localhost:3000/animals/id                                       | Delete a single animal by id 
+| GET       | http://localhost:3000/search/?name=walter&?species=dog          | Get animals by searching their attributes field   
 
-4. navigate to the new folder that was created on your desk
-```sh
-cd rails_product_reviewer
-```
+## Technologies Used
 
-
-5. run bundle install
-```sh
-bundle install
-```
-6. run development server
-```sh
-npm run start
-```
-7. you will need to start a data base in psql 
-```
-rake db:create
-rake db:migrate
-```
-8. if you want to see something in the data base you will need to seed it
-```
-rake db:seed
-```
-
-9. after you this you can start the server.
-```sh
-rails s
-```
-10. then type localhost:3000 in the browser of choice and navigate around the app.
+* Ruby/Rails

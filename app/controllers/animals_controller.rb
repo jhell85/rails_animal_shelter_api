@@ -33,6 +33,22 @@ class AnimalsController < ApplicationController
     end
   end
 
+  def search
+    @animals = Animal.where(nil)
+    search_params(params).each do |key, value|
+     @animals = @animals.public_send("search_by_#{key}", value.downcase) if value.present?
+    end
+ 
+    if @animals.length == 0
+     render status: 200, json: {
+       message: "No animals based on your search."
+       }
+     else
+       json_response(@animals)
+     end
+   end
+ 
+
   private
   def json_response(object, status = :ok)
     render json: object, status: status
@@ -41,4 +57,9 @@ class AnimalsController < ApplicationController
   def animal_params
     params.permit(:name, :species, :age)
   end
+
+  def search_params(params)
+    params.slice(:species, :breed, :gender)
+  end
+  
   end
